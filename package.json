@@ -11,7 +11,8 @@
     "react-icons": "^3.9.0",
     "react-scripts": "3.4.1",
     "firebase": "^6.2.4",
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.12.0",
+    "moment": "^2.24.0"
   },
   "scripts": {
     "start": "react-scripts start",
