@@ -4,7 +4,7 @@ import { firebase } from "../firebase";
 
 import { collectedTasksExist } from "../helpers";
 
-export const useTask = selectedProject => {
+export const useTasks = selectedProject => {
   const [tasks, setTasks] = useState([]);
   const [archivedTasks, setArchivedTasks] = useState([]);
 
@@ -49,19 +49,20 @@ export const useTask = selectedProject => {
   return { tasks, archivedTasks };
 };
 
-export const useProject = () => {
+export const useProjects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    firebase.firestore
+    firebase
+      .firestore()
       .collection("projects")
       .where("userId", "==", "xD54Q3dGwp58SSim6ndf")
       .orderBy("projectId")
       .get()
       .then(snapshot => {
-        const allProjects = snapshot.docs.map(projects => ({
-          ...projects.data(),
-          docId: projectId
+        const allProjects = snapshot.docs.map(project => ({
+          ...project.data(),
+          docId: project.id
         }));
         if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
           setProjects(allProjects);
