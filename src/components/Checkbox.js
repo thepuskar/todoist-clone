@@ -1,7 +1,7 @@
 import React from "react";
 import { firebase } from "../firebase";
 
-export const Checkbox = ({ id }) => {
+export const Checkbox = ({ id, taskDesc }) => {
   const archiveTask = () => {
     firebase
       .firestore()

@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import moment from "moment";
 import { firebase } from "../firebase";
+import { collatedTasksExist } from "../helpers";
 
-import { collectedTasksExist } from "../helpers";
-
-export const useTasks = selectedProject => {
+export const useTasks = (selectedProject) => {
   const [tasks, setTasks] = useState([]);
   const [archivedTasks, setArchivedTasks] = useState([]);
 
@@ -12,11 +11,11 @@ export const useTasks = selectedProject => {
     let unsubscribe = firebase
       .firestore()
       .collection("tasks")
-      .where("userId", "==", "xD54Q3dGwp58SSim6ndf");
+      .where("userid", "==", "xD54Q3dGwp58SSim6ndf");
 
     unsubscribe =
-      selectedProject && !collectedTasksExist(selectedProject)
-        ? (unsubscribe = unsubscribe.where("projectId", "==", selectedProject))
+      selectedProject && !collatedTasksExist(selectedProject)
+        ? (unsubscribe = unsubscribe.where("projectid", "==", selectedProject))
         : selectedProject === "TODAY"
         ? (unsubscribe = unsubscribe.where(
             "date",
@@ -27,25 +26,27 @@ export const useTasks = selectedProject => {
         ? (unsubscribe = unsubscribe.where("date", "==", ""))
         : unsubscribe;
 
-    unsubscribe = unsubscribe.onSnapshot(snapshot => {
-      const newTasks = snapshot.docs.map(task => ({
+    unsubscribe = unsubscribe.onSnapshot((snapshot) => {
+      const newTasks = snapshot.docs.map((task) => ({
         id: task.id,
-        ...task.data()
+        ...task.data(),
       }));
+
       setTasks(
         selectedProject === "NEXT_7"
           ? newTasks.filter(
-              task =>
+              (task) =>
                 moment(task.date, "DD-MM-YYYY").diff(moment(), "days") <= 7 &&
                 task.archived !== true
             )
-          : newTasks.filter(task => task.archived !== true)
+          : newTasks.filter((task) => task.archived !== true)
       );
-
-      setArchivedTasks(newTasks.filter(task => task.archived !== false));
+      setArchivedTasks(newTasks.filter((task) => task.archived !== false));
     });
+
     return () => unsubscribe();
   }, [selectedProject]);
+
   return { tasks, archivedTasks };
 };
 
@@ -56,18 +57,20 @@ export const useProjects = () => {
     firebase
       .firestore()
       .collection("projects")
-      .where("userId", "==", "xD54Q3dGwp58SSim6ndf")
-      .orderBy("projectId")
+      .where("userid", "==", "xD54Q3dGwp58SSim6ndf")
+      .orderBy("projectid")
       .get()
-      .then(snapshot => {
-        const allProjects = snapshot.docs.map(project => ({
+      .then((snapshot) => {
+        const allProjects = snapshot.docs.map((project) => ({
           ...project.data(),
-          docId: project.id
+          docId: project.id,
         }));
+
         if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
           setProjects(allProjects);
         }
       });
   }, [projects]);
+
   return { projects, setProjects };
 };
