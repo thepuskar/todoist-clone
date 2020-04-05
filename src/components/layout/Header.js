@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "../../../src/images/logo.png";
 
 import { FaPizzaSlice } from "react-icons/fa";
 
@@ -7,13 +8,15 @@ export const Header = () => {
     <header className="header" data-testid="header">
       <nav>
         <div className="logo">
-          <img src="images/logo.png" alt="logo" />
+          <img src={Logo} alt="logo" />
         </div>
-        <div className="setting">
-          <li>+</li>
-          <li>
-            <FaPizzaSlice />
-          </li>
+        <div className="settings">
+          <ul>
+            <li className="settings__add">+</li>
+            <li className="settings__darkmode">
+              <FaPizzaSlice />
+            </li>
+          </ul>
         </div>
       </nav>
     </header>
