@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-
 import { FaTrashAlt } from "react-icons/fa";
-
-import { useProjectValue, useSelectedProjectValue } from "../context";
+// import PropTypes from "prop-types";
+import { useProjectsValue, useSelectedProjectValue } from "../context";
 import { firebase } from "../firebase";
 
 export const IndividualProject = ({ project }) => {
-  const [showConfirm, setShowConfirm] = useState([]);
-  const { projects, setProjects } = useState([]);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
 
   const deleteProject = (docId) => {
@@ -62,3 +61,7 @@ export const IndividualProject = ({ project }) => {
     </>
   );
 };
+
+// IndividualProject.propTypes = {
+//   project: PropTypes.object.isRequired,
+// };
