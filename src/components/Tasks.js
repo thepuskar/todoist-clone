@@ -1,34 +1,34 @@
 import React, { useEffect } from "react";
 
-import { useTasks } from "../hooks/index";
 import { Checkbox } from "./Checkbox";
+import { useTasks } from "../hooks";
 import { collectedTask } from "../constants";
-import { getTitle, getCollectedTitle, collectedTasksExits } from "../helpers";
-import {
-  useSelectedProjectValue,
-  useProjectValue,
-  SelectedProjectContext,
-  useProjectsValue,
-} from "../context";
+import { getTitle, getCollatedTitle, collatedTasksExist } from "../helpers";
+import { useSelectedProjectValue, useProjectsValue } from "../context";
 
 export const Tasks = () => {
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
 
-  const projectName = "";
+  let projectName = "";
 
-  if (projects && selectedProject && !collectedTasksExits(selectedProject)) {
-    projectName = getTitle(projects, selectedProject).name;
+  if (collatedTasksExist(selectedProject) && selectedProject) {
+    projectName = getCollatedTitle(collectedTask, selectedProject).name;
   }
-  if (collectedTasksExits(selectedProject) && selectedProject) {
-    projectName = getCollectedTitle(collectedTask, selectedProject).name;
+
+  if (
+    projects &&
+    projects.length > 0 &&
+    selectedProject &&
+    !collatedTasksExist(selectedProject)
+  ) {
+    projectName = getTitle(projects, selectedProject).name;
   }
 
   useEffect(() => {
-    document.title = `${projectName}:Todoist`;
+    document.title = `${projectName}: Todoist`;
   });
-
   return (
     <div className="tasks" data-testid="tasks">
       <h2 data-testid="project-name">{projectName}</h2>
