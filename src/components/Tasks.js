@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { Checkbox } from "./Checkbox";
 import { useTasks } from "../hooks";
@@ -23,7 +23,7 @@ export const Tasks = () => {
     selectedProject &&
     !collatedTasksExist(selectedProject)
   ) {
-    projectName = getTitle(projects, selectedProject).name;
+    projectName = getTitle(projects, selectedProject);
   }
 
   useEffect(() => {
