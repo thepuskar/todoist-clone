@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { firebase } from "../firebase";
 import { generatePushId } from "../helpers";
-import { useProjectvalue, useProjectsValue } from "../context";
+import { useProjectsValue } from "../context";
 
 export const AddProject = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow);
   const [projectName, setProjectName] = useState("");
 
   const projectid = generatePushId();
-  const { setProjects } = useProjectsValue();
+  const { projects, setProjects } = useProjectsValue();
 
   const addProject = () =>
     projectName &&
@@ -21,7 +21,7 @@ export const AddProject = ({ shouldShow = false }) => {
         userid: "xD54Q3dGwp58SSim6ndf",
       })
       .then(() => {
-        setProjects([]);
+        setProjects([...projects]);
         setProjectName("");
         setShow(false);
       });
@@ -29,14 +29,14 @@ export const AddProject = ({ shouldShow = false }) => {
   return (
     <div className="add-project" data-testid="add-project">
       {show && (
-        <div className="add-project__input">
+        <div className="add-project__input" data-testid="add-project-inner">
           <input
             value={projectName}
+            onChange={(e) => setProjectName(e.target.value)}
             className="add-project__name"
-            data-testdd="project-name"
+            data-testid="project-name"
             type="text"
             placeholder="Name your project"
-            onChange={(e) => setProjectName(e.target.value)}
           />
           <button
             className="add-project__submit"
@@ -44,12 +44,16 @@ export const AddProject = ({ shouldShow = false }) => {
             onClick={() => addProject()}
             data-testid="add-project-submit"
           >
-            Add Projects
+            Add Project
           </button>
           <span
+            aria-label="Cancel adding project"
             data-testid="hide-project-overlay"
-            className="hide-project__cancel"
+            className="add-project__cancel"
             onClick={() => setShow(false)}
+            onKeyDown={() => setShow(false)}
+            role="button"
+            tabIndex={0}
           >
             Cancel
           </span>
@@ -57,9 +61,13 @@ export const AddProject = ({ shouldShow = false }) => {
       )}
       <span className="add-project__plus">+</span>
       <span
-        data-testid="add-project__action"
+        aria-label="Add Project"
+        data-testid="add-project-action"
         className="add-project__text"
         onClick={() => setShow(!show)}
+        onKeyDown={() => setShow(!show)}
+        role="button"
+        tabIndex={0}
       >
         Add Project
       </span>
