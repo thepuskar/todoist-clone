@@ -679,7 +679,7 @@ header {
   @include box-overlay();
   background-color: white;
   width: 200px;
-  right: 0;
+  right: 0; 
 
   @include mq("900px") {
     width: 200px;

@@ -56,7 +56,7 @@ export const AddTask = ({
 
   return (
     <div
-      className={showQuickAddTask ? "add-task__overlay" : "add-task"}
+      className={showQuickAddTask ? "add-task add-task__overlay" : "add-task"}
       data-testid="add-task-comp"
     >
       {showAddTaskMain && (
@@ -70,7 +70,7 @@ export const AddTask = ({
         </div>
       )}
 
-      {(showMain || setShowQuickAddTask) && (
+      {(showMain || showQuickAddTask) && (
         <div className="add-task__main" data-testid="add-task-main">
           {showQuickAddTask && (
             <>
@@ -84,6 +84,13 @@ export const AddTask = ({
                     setShowProjectOverlay(false);
                     setShowQuickAddTask(false);
                   }}
+                  onKeyDown={() => {
+                    setShowMain(false);
+                    setShowProjectOverlay(false);
+                    setShowQuickAddTask(false);
+                  }}
+                  tabIndex={0}
+                  role="button"
                 >
                   X
                 </span>
