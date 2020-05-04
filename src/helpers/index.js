@@ -1,7 +1,7 @@
 import { collectedTask } from "../constants";
 
-export const getTitle = (projects, projectId) =>
-  projects.find((project) => project.projectId === projectId);
+export const getTitle = (projects, projectid) =>
+  projects.find((project) => project.projectid === projectid);
 
 export const getCollatedTitle = (projects, key) =>
   projects.find((project) => project.key === key);

@@ -24,7 +24,7 @@ export const Tasks = () => {
     selectedProject &&
     !collatedTasksExist(selectedProject)
   ) {
-    projectName = getTitle(projects, selectedProject);
+    projectName = getTitle(projects, selectedProject).name;
   }
 
   useEffect(() => {
