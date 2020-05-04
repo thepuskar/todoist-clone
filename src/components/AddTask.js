@@ -67,6 +67,38 @@ export const AddTask = ({
           <span className="add-task__text">Add Task</span>
         </div>
       )}
+
+      {(showMain || setShowQuickAddTask) && (
+        <div className="add-task__main" data-testid="add-task-main">
+          {showQuickAddTask && (
+            <>
+              <div data-testid="quick-add-task">
+                <h2 className="header">Qucik Add Task</h2>
+                <span
+                  className="add-task__cancel-x"
+                  data-testid="add-task-quick-cancel"
+                  onClick={() => {
+                    setShowMain(false);
+                    setShowProjectOverlay(false);
+                    setShowQuickAddTask(false);
+                  }}
+                >
+                  X
+                </span>
+              </div>
+            </>
+          )}
+          <p>Project overlay here</p>
+          <p>Project date here</p>
+          <input
+            className="add-task__content"
+            data-testid="add-task-content"
+            type="text"
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
+          />
+        </div>
+      )}
     </div>
   );
 };
