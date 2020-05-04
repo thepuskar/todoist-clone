@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import moment from "moment";
-import { firebase } from "../firebase";
 
 import { FaRegListAlt, FaRegCalendarAlt } from "react-icons/fa";
 
+import { firebase } from "../firebase";
 import { useSelectedProjectValue } from "../context";
+import { ProjectOverlay } from "./ProjectOverlay";
 
 export const AddTask = ({
   showAddTaskMain = true,
@@ -13,7 +14,7 @@ export const AddTask = ({
   setShowQuickAddTask,
 }) => {
   const [task, setTask] = useState("");
-  const [taskDate, setTaskDAte] = useState("");
+  const [taskDate, setTaskDate] = useState("");
   const [project, setProject] = useState("");
   const [showMain, setShowMain] = useState(showShouldMain);
   const [showProjectOverlay, setShowProjectOverlay] = useState(false);
@@ -35,7 +36,7 @@ export const AddTask = ({
       projectid &&
       firebase
         .firestore()
-        .collection("task")
+        .collection("tasks")
         .add({
           archived: false,
           projectid,
@@ -88,7 +89,11 @@ export const AddTask = ({
               </div>
             </>
           )}
-          <p>Project overlay here</p>
+          <ProjectOverlay
+            setProject={setProject}
+            showProjectOverlay={showProjectOverlay}
+            setShowProjectOverlay={setShowProjectOverlay}
+          />
           <p>Project date here</p>
           <input
             className="add-task__content"
