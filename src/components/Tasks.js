@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 
+import { AddTask } from "./AddTask";
 import { Checkbox } from "./Checkbox";
 import { useTasks } from "../hooks";
 import { collectedTask } from "../constants";
@@ -41,6 +42,7 @@ export const Tasks = () => {
           </li>
         ))}
       </ul>
+      <AddTask />
     </div>
   );
 };

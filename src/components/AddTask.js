@@ -16,8 +16,8 @@ export const AddTask = ({
   const [taskDate, setTaskDAte] = useState("");
   const [project, setProject] = useState("");
   const [showMain, setShowMain] = useState(showShouldMain);
-  const [showProjectOverlay, setShowProjectOverlay] = useState(fasle);
-  const [showTaskDate, setShowTaskDate] = useState(fasle);
+  const [showProjectOverlay, setShowProjectOverlay] = useState(false);
+  const [showTaskDate, setShowTaskDate] = useState(false);
 
   const { selectedProject } = useSelectedProjectValue();
 
@@ -38,7 +38,7 @@ export const AddTask = ({
         .collection("task")
         .add({
           archived: false,
-          projectid ,
+          projectid,
           task,
           date: collatedDate || taskDate,
           userid: "xD54Q3dGwp58SSim6ndf",
@@ -52,5 +52,21 @@ export const AddTask = ({
     );
   };
 
-  return <p>Stop</p>;
+  return (
+    <div
+      className={showQuickAddTask ? "add-task__overlay" : "add-task"}
+      data-testid="add-task-comp"
+    >
+      {showAddTaskMain && (
+        <div
+          className="add-task__shallow"
+          data-testid="show-main-action"
+          onClick={() => setShowMain(!showMain)}
+        >
+          <span className="add-task__plus">+</span>
+          <span className="add-task__text">Add Task</span>
+        </div>
+      )}
+    </div>
+  );
 };
