@@ -4,7 +4,7 @@ In this repo, I am had created the popular <a href="https://todoist.com">Todoist
 </p>
 
 <h2>Screenshot</h2>
-<img href="./src/images/ss.png>
+<img src="./src/images/ss.png" />
 
 <h1>🛠 Installation & Set Up</h1>
 ####1. Install and use the correct version of Node
@@ -18,7 +18,7 @@ npm install
 npm install --save-dev @testing-library/jest-dom
 npm install --save-dev @testing-library/react
 npm install @testing-library/user-event --save-dev
-$ npm install --save firebase
+\$ npm install --save firebase
 npm install moment --save
 npm install node-sass
 npm install react react-dom
