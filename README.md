@@ -4,7 +4,7 @@ In this repo, I am had created the popular <a href="https://todoist.com">Todoist
 </p>
 
 <h2>Screenshot</h2>
-<img src="./src/images/ss.png" />
+<img src="./src/images/ss.png" style="box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);" />
 
 <h1>🛠 Installation & Set Up</h1>
 #### 1. Install and use the correct version of Node
