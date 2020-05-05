@@ -1,4 +1,4 @@
-import { collectedTask } from "../constants";
+import { collatedTasks } from "../constants";
 
 export const getTitle = (projects, projectid) =>
   projects.find((project) => project.projectid === projectid);
@@ -7,7 +7,7 @@ export const getCollatedTitle = (projects, key) =>
   projects.find((project) => project.key === key);
 
 export const collatedTasksExist = (selectedProject) =>
-  collectedTask.find((task) => task.key === selectedProject);
+  collatedTasks.find((task) => task.key === selectedProject);
 
 export const generatePushId = (() => {
   const PUSH_CHARS =

@@ -650,7 +650,7 @@ header {
 
   &__list li {
     @include task-item();
-    padding: 7px;
+    padding: 0;
 
     div:nth-child(1) {
       padding: 10px;
@@ -679,7 +679,7 @@ header {
   @include box-overlay();
   background-color: white;
   width: 200px;
-  right: 0; 
+  right: 0;
 
   @include mq("900px") {
     width: 200px;
@@ -687,7 +687,7 @@ header {
 
   &__list li {
     @include task-item();
-    padding: 7px;
+    padding: 0;
 
     div:nth-child(1) {
       width: 100%;
