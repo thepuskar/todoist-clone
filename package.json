@@ -1,5 +1,15 @@
 {
   "name": "todo-app",
+  "description": "Clone of todoist app",
+  "author": "Puskar Adhikari <puskar.ad@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devpuskar/REACT-todoApp"
+  },
+  "keywords": [
+    "react"
+  ],
+  "license": "MIT",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
