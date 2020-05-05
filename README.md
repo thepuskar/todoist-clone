@@ -7,26 +7,35 @@ In this repo, I am had created the popular <a href="https://todoist.com">Todoist
 <img src="./src/images/ss.png" />
 
 <h1>🛠 Installation & Set Up</h1>
-####1. Install and use the correct version of Node
+#### 1. Install and use the correct version of Node
 ```
 npm install
 ```
 
-####2. Install dependencies
+#### 2. Install dependencies
 
 ```
-npm install --save-dev @testing-library/jest-dom
-npm install --save-dev @testing-library/react
-npm install @testing-library/user-event --save-dev
-\$ npm install --save firebase
-npm install moment --save
-npm install node-sass
-npm install react react-dom
-npm install react-icons --save
++ npm install --save-dev @testing-library/jest-dom
+
++ npm install --save-dev @testing-library/react
+
++ npm install @testing-library/user-event --save-dev
+
++ npm install --save firebase
+
++ npm install moment --save
+
++ npm install node-sass
+
++ npm install react react-dom
+
++ npm install react-icons --save
 ```
 
-####3. Start the development server
+#### 3. Start the development server
 
 ```
 npm start
 ```
+
+# 🚀HappyCoding
