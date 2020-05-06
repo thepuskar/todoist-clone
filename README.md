@@ -55,7 +55,7 @@ npm start
 
     - Locked mode
 
-     Denies all reads and writes from mobile and web clients. Your authenticated application servers can still access your database.
+      Denies all reads and writes from mobile and web clients. Your authenticated application servers can still access your database.
 
 4.  Click **Done**.
 
@@ -84,4 +84,5 @@ export { firebaseConfig  as  firebase };
 ```
 
 <br />
+
 # #🚀HappyCoding
