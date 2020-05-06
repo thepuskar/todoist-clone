@@ -46,12 +46,15 @@ npm start
 
 2) Navigate to the Database section of the Firebase console. You'll be prompted to select an existing Firebase project. Follow the database creation workflow.
 3) Select a starting mode for your Firebase Security Rules:
+
    - Test mode
+
      Good for getting started with the mobile and web client libraries, but allows anyone to read and overwrite your data. After testing, **make sure to review the [Understand Firebase Realtime Database Rules](https://firebase.google.com/docs/database/security) section.**
      To get started with the web, iOS, or Android SDK, select test mode.
 
 
-      - Locked mode
+    - Locked mode
+
      Denies all reads and writes from mobile and web clients. Your authenticated application servers can still access your database.
 
 4.  Click **Done**.
@@ -80,8 +83,5 @@ measurementId:  "G-measurement-id",
 export { firebaseConfig  as  firebase };
 ```
 
+<br />
 # #🚀HappyCoding
-
-```
-
-```
