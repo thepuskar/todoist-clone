@@ -18,7 +18,7 @@
     "@testing-library/user-event": "^7.2.1",
     "firebase": "^6.2.4",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.9.0",
